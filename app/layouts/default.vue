@@ -24,6 +24,16 @@ const navigation = [
 const isActiveRoute = (path: string) => {
   return route.path === path || route.path.startsWith(path + '/')
 }
+
+const isMobileMenuOpen = ref(false)
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
+}
 </script>
 
 <template>
@@ -109,11 +119,56 @@ const isActiveRoute = (path: string) => {
               size="sm"
               aria-label="Menu"
               class="lg:hidden"
+              @click="toggleMobileMenu"
             />
           </div>
         </div>
       </div>
     </header>
+
+    
+    <div 
+      v-if="isMobileMenuOpen"
+      class="lg:hidden fixed inset-0 z-50 bg-black/50"
+      @click="closeMobileMenu"
+    >
+      <div 
+        class="absolute right-0 top-0 h-full w-80 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-700 shadow-xl"
+        @click.stop
+      >
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold text-slate-900 dark:text-white">
+              Menu
+            </h2>
+            <UButton
+              icon="lucide:x"
+              color="neutral"
+              variant="ghost"
+              size="sm"
+              aria-label="Fechar menu"
+              @click="closeMobileMenu"
+            />
+          </div>
+          
+          <nav class="space-y-2">
+            <UButton
+              v-for="item in navigation"
+              :key="item.to"
+              :to="item.to"
+              :icon="item.icon"
+              :color="isActiveRoute(item.to) ? 'primary' : 'neutral'"
+              :variant="isActiveRoute(item.to) ? 'solid' : 'ghost'"
+              class="w-full justify-start px-4 py-3"
+              :title="item.description"
+              @click="closeMobileMenu"
+            >
+              <span class="ml-3">{{ item.label }}</span>
+            </UButton>
+          </nav>
+        </div>
+      </div>
+    </div>
 
     
     <main id="main-content" class="flex-1 min-h-[calc(100vh-4rem)]" tabindex="-1">

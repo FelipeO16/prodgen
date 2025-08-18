@@ -1,0 +1,43 @@
+<script setup lang="ts">
+interface Props {
+  title?: string
+  description?: string
+  icon?: string
+  actionLabel?: string
+  actionTo?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  title: 'Nenhum item encontrado',
+  description: 'Não há itens para exibir no momento.',
+  icon: 'lucide:inbox'
+})
+</script>
+
+<template>
+  <div class="flex flex-col items-center justify-center py-12 px-4 text-center">
+    <div class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
+      <UIcon 
+        :name="icon" 
+        class="w-8 h-8 text-gray-400 dark:text-gray-600" 
+      />
+    </div>
+    
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+      {{ title }}
+    </h3>
+    
+    <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
+      {{ description }}
+    </p>
+    
+    <UButton
+      v-if="actionLabel && actionTo"
+      :to="actionTo"
+      color="primary"
+      variant="solid"
+    >
+      {{ actionLabel }}
+    </UButton>
+  </div>
+</template>

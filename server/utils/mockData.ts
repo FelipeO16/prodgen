@@ -1,0 +1,203 @@
+import type { Product } from '~~/types/product'
+
+export const mockProducts: Product[] = [
+  {
+    id: '1',
+    name: 'iPhone 15 Pro',
+    description: 'O mais avançado iPhone com chip A17 Pro, câmera profissional e design em titânio.',
+    price: 8999.99,
+    category: 'Eletrônicos',
+    image: 'https://images.unsplash.com/photo-1696446701796-da61225697cc?w=400&h=300&fit=crop',
+    stock: 25,
+    rating: 4.8,
+    featured: true,
+    createdAt: '2024-01-15T10:30:00Z',
+    updatedAt: '2024-01-15T10:30:00Z'
+  },
+  {
+    id: '2',
+    name: 'MacBook Air M3',
+    description: 'Notebook ultra-fino com chip M3, 8GB RAM e 256GB SSD. Perfeito para trabalho e estudos.',
+    price: 12999.99,
+    category: 'Eletrônicos',
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=300&fit=crop',
+    stock: 15,
+    rating: 4.9,
+    featured: true,
+    createdAt: '2024-01-14T14:20:00Z',
+    updatedAt: '2024-01-14T14:20:00Z'
+  },
+  {
+    id: '3',
+    name: 'Camiseta Premium Cotton',
+    description: 'Camiseta 100% algodão premium, corte moderno e tecido respirável.',
+    price: 89.99,
+    category: 'Roupas',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop',
+    stock: 50,
+    rating: 4.5,
+    featured: false,
+    createdAt: '2024-01-13T09:15:00Z',
+    updatedAt: '2024-01-13T09:15:00Z'
+  },
+  {
+    id: '4',
+    name: 'Tênis de Corrida Nike',
+    description: 'Tênis esportivo com tecnologia de amortecimento avançada e design ergonômico.',
+    price: 299.99,
+    category: 'Esportes',
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop',
+    stock: 30,
+    rating: 4.7,
+    featured: true,
+    createdAt: '2024-01-12T16:45:00Z',
+    updatedAt: '2024-01-12T16:45:00Z'
+  },
+  {
+    id: '5',
+    name: 'Livro: JavaScript Moderno',
+    description: 'Guia completo sobre JavaScript ES6+ com exemplos práticos e projetos reais.',
+    price: 79.99,
+    category: 'Livros',
+    image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=300&fit=crop',
+    stock: 100,
+    rating: 4.6,
+    featured: false,
+    createdAt: '2024-01-11T11:30:00Z',
+    updatedAt: '2024-01-11T11:30:00Z'
+  },
+  {
+    id: '6',
+    name: 'Sofá 3 Lugares Moderno',
+    description: 'Sofá confortável com estofado premium e design contemporâneo para sala de estar.',
+    price: 1899.99,
+    category: 'Casa e Jardim',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop',
+    stock: 8,
+    rating: 4.4,
+    featured: false,
+    createdAt: '2024-01-10T13:20:00Z',
+    updatedAt: '2024-01-10T13:20:00Z'
+  },
+  {
+    id: '7',
+    name: 'Perfume Masculino Classic',
+    description: 'Fragrância sofisticada com notas amadeiradas e cítricas, longa duração.',
+    price: 199.99,
+    category: 'Saúde e Beleza',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=300&fit=crop',
+    stock: 40,
+    rating: 4.3,
+    featured: false,
+    createdAt: '2024-01-09T15:10:00Z',
+    updatedAt: '2024-01-09T15:10:00Z'
+  },
+  {
+    id: '8',
+    name: 'LEGO Architecture Taj Mahal',
+    description: 'Set de construção detalhado do famoso monumento com mais de 2000 peças.',
+    price: 449.99,
+    category: 'Brinquedos',
+    image: 'https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&h=300&fit=crop',
+    stock: 12,
+    rating: 4.9,
+    featured: true,
+    createdAt: '2024-01-08T10:05:00Z',
+    updatedAt: '2024-01-08T10:05:00Z'
+  },
+  {
+    id: '9',
+    name: 'Pneu Michelin 205/55R16',
+    description: 'Pneu de alta performance com tecnologia de aderência e durabilidade superior.',
+    price: 389.99,
+    category: 'Automóveis',
+    image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop',
+    stock: 20,
+    rating: 4.5,
+    featured: false,
+    createdAt: '2024-01-07T14:30:00Z',
+    updatedAt: '2024-01-07T14:30:00Z'
+  },
+  {
+    id: '10',
+    name: 'Vestido Casual Floral',
+    description: 'Vestido feminino com estampa floral, tecido leve e caimento perfeito.',
+    price: 159.99,
+    category: 'Roupas',
+    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=300&fit=crop',
+    stock: 35,
+    rating: 4.6,
+    featured: false,
+    createdAt: '2024-01-06T12:15:00Z',
+    updatedAt: '2024-01-06T12:15:00Z'
+  },
+  {
+    id: '11',
+    name: 'Monitor 4K UltraWide',
+    description: 'Monitor 34" 4K com tecnologia HDR e taxa de atualização de 144Hz.',
+    price: 2599.99,
+    category: 'Eletrônicos',
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=300&fit=crop',
+    stock: 18,
+    rating: 4.8,
+    featured: true,
+    createdAt: '2024-01-05T16:45:00Z',
+    updatedAt: '2024-01-05T16:45:00Z'
+  },
+  {
+    id: '12',
+    name: 'Kit de Ferramentas Profissional',
+    description: 'Conjunto completo de ferramentas para uso doméstico e profissional.',
+    price: 349.99,
+    category: 'Casa e Jardim',
+    image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400&h=300&fit=crop',
+    stock: 25,
+    rating: 4.4,
+    featured: false,
+    createdAt: '2024-01-04T11:20:00Z',
+    updatedAt: '2024-01-04T11:20:00Z'
+  },
+  {
+    id: '13',
+    name: 'Bicicleta Mountain Bike',
+    description: 'Bicicleta para trilhas com 21 marchas e suspensão dianteira.',
+    price: 1299.99,
+    category: 'Esportes',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+    stock: 10,
+    rating: 4.7,
+    featured: false,
+    createdAt: '2024-01-03T09:30:00Z',
+    updatedAt: '2024-01-03T09:30:00Z'
+  },
+  {
+    id: '14',
+    name: 'Shampoo Hidratante Premium',
+    description: 'Shampoo com fórmula hidratante para cabelos ressecados e danificados.',
+    price: 45.99,
+    category: 'Saúde e Beleza',
+    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=300&fit=crop',
+    stock: 60,
+    rating: 4.2,
+    featured: false,
+    createdAt: '2024-01-02T14:15:00Z',
+    updatedAt: '2024-01-02T14:15:00Z'
+  },
+  {
+    id: '15',
+    name: 'Puzzle 1000 Peças Paisagem',
+    description: 'Quebra-cabeça com bela paisagem natural, ideal para relaxamento.',
+    price: 39.99,
+    category: 'Brinquedos',
+    image: 'https://images.unsplash.com/photo-1594736797933-d0f06ba50ec0?w=400&h=300&fit=crop',
+    stock: 45,
+    rating: 4.3,
+    featured: false,
+    createdAt: '2024-01-01T10:00:00Z',
+    updatedAt: '2024-01-01T10:00:00Z'
+  }
+]
+
+const products = [...mockProducts]
+const nextId = 16
+

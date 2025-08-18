@@ -243,7 +243,7 @@ onUnmounted(() => {
               icon="lucide:arrow-left"
               size="lg"
             >
-              ← Voltar
+              Voltar
             </UButton>
           </div>
         </div>

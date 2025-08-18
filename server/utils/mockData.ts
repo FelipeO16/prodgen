@@ -198,6 +198,6 @@ export const mockProducts: Product[] = [
   }
 ]
 
-const products = [...mockProducts]
-const nextId = 16
+const _products = [...mockProducts]
+const _nextId = 16
 

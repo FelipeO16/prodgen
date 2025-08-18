@@ -2,7 +2,7 @@ import type { Product, ProductFilters, PaginationMeta, ProductsResponse } from '
 
 export function simulateLatency(min = 300, max = 600): Promise<void> {
   const delay = Math.floor(Math.random() * (max - min + 1)) + min
-  return new Promise(resolve => setTimeout(resolve, delay))
+  return new Promise<void>((resolve) => setTimeout(resolve, delay))
 }
 
 export function filterProducts(products: Product[], filters: Partial<ProductFilters>): Product[] {
@@ -36,8 +36,8 @@ export function sortProducts(products: Product[], sortBy: string = 'name', sortO
   const sorted = [...products]
 
   sorted.sort((a, b) => {
-    let valueA: any
-    let valueB: any
+    let valueA: number | string | Date
+    let valueB: number | string | Date
 
     switch (sortBy) {
       case 'price':

@@ -18,7 +18,8 @@ interface Emits {
 
 const props = withDefaults(defineProps<Props>(), {
   placeholder: 'Selecione...',
-  loading: false
+  loading: false,
+  label: undefined
 })
 
 const emit = defineEmits<Emits>()
@@ -29,7 +30,7 @@ const selectedValue = computed({
 })
 
 const _selectedOption = computed(() => {
-  return props.options.find(option => option.value === selectedValue.value)
+  return props.options.find((option: Option) => option.value === selectedValue.value)
 })
 </script>
 

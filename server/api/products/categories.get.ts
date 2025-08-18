@@ -1,4 +1,4 @@
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (_event) => {
   const { simulateLatency } = await import('~~/server/utils/productHelpers')
   const { PRODUCT_CATEGORIES } = await import('~~/types/product')
   

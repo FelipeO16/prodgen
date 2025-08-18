@@ -7,10 +7,12 @@ interface Props {
   actionTo?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   title: 'Nenhum item encontrado',
   description: 'Não há itens para exibir no momento.',
-  icon: 'lucide:inbox'
+  icon: 'lucide:inbox',
+  actionLabel: undefined,
+  actionTo: undefined
 })
 </script>
 

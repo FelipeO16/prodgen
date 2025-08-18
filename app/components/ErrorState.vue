@@ -10,10 +10,11 @@ interface Emits {
   'retry': []
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   title: 'Ops! Algo deu errado',
   description: 'Ocorreu um erro inesperado. Tente novamente.',
-  retryLabel: 'Tentar novamente'
+  retryLabel: 'Tentar novamente',
+  error: undefined
 })
 
 const emit = defineEmits<Emits>()

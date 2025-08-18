@@ -47,7 +47,7 @@ export interface UpdateProductData extends Partial<CreateProductData> {
   id: string
 }
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   data: T
   message?: string
   success: boolean

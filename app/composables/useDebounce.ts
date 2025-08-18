@@ -1,13 +1,13 @@
-export function useDebounce(fn: Function, delay: number = 300) {
+export function useDebounce<T extends (...args: unknown[]) => void>(fn: T, delay: number = 300) {
   let timeoutId: NodeJS.Timeout | null = null
 
-  const debounced = (...args: any[]) => {
+  const debounced = (...args: Parameters<T>) => {
     if (timeoutId) {
       clearTimeout(timeoutId)
     }
     
     timeoutId = setTimeout(() => {
-      fn.apply(null, args)
+      fn(...args)
     }, delay)
   }
 
@@ -18,9 +18,9 @@ export function useDebounce(fn: Function, delay: number = 300) {
     }
   }
 
-  const flush = (...args: any[]) => {
+  const flush = (...args: Parameters<T>) => {
     cancel()
-    fn.apply(null, args)
+    fn(...args)
   }
 
   return {

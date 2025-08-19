@@ -2,6 +2,10 @@
 
 SPA moderna para gerenciamento de produtos com Nuxt 4, Vue 3, TypeScript e Nuxt UI.
 
+## 🌐 Demo Online
+
+**Acesse a aplicação:** [https://prodgen.nuxt.dev/](https://prodgen.nuxt.dev/)
+
 ## 🚀 Tecnologias
 
 - **Nuxt 4** - Framework Vue.js
@@ -36,6 +40,19 @@ npm run dev
 
 # Build para produção
 npm run build
+```
+
+## 🧪 Testes
+
+```bash
+# Executar testes
+npm run test
+
+# Executar testes com coverage
+npm run test:coverage
+
+# Executar linting
+npm run lint
 ```
 
 ## 📁 Estrutura
@@ -75,7 +92,9 @@ npm run dev          # Desenvolvimento
 npm run build        # Build produção
 npm run preview      # Preview produção
 npm run lint         # Linting
-npm run test         # Testes
+npm run test         # Testes unitários
+npm run test:run     # Testes sem watch
+npm run test:coverage # Testes com coverage
 ```
 
 ## 📱 Responsividade

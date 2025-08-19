@@ -75,7 +75,7 @@ npm run dev          # Desenvolvimento
 npm run build        # Build produção
 npm run preview      # Preview produção
 npm run lint         # Linting
-npm run type-check   # Verificação TypeScript
+npm run test         # Testes
 ```
 
 ## 📱 Responsividade

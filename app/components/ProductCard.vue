@@ -28,9 +28,9 @@ const formattedPrice = computed(() => {
 })
 
 const stockStatus = computed(() => {
-  if (props.product.stock === 0) return 'Esgotado'
-  if (props.product.stock <= 5) return 'Estoque baixo'
-  return 'Em estoque'
+  if (props.product.stock === 0) return $t('products.card.stock')
+  if (props.product.stock <= 5) return $t('products.card.lowStock')
+  return $t('products.card.stock')
 })
 
 const stockColor = computed(() => {
@@ -72,7 +72,7 @@ const stockIcon = computed(() => {
           class="shadow-lg"
         >
           <UIcon name="lucide:star" class="w-3 h-3 mr-1" />
-          Destaque
+          {{ $t('products.card.featured') }}
         </UBadge>
       </div>
       
@@ -120,7 +120,7 @@ const stockIcon = computed(() => {
         </div>
         <div class="flex items-center gap-1">
           <UIcon name="lucide:package" class="w-4 h-4" />
-          <span>{{ product.stock }} unidades</span>
+          <span>{{ product.stock }} {{ $t('products.card.stock') }}</span>
         </div>
       </div>
       
@@ -139,7 +139,7 @@ const stockIcon = computed(() => {
             variant="ghost"
             size="sm"
             icon="lucide:eye"
-            aria-label="Ver detalhes"
+            :aria-label="$t('products.card.view')"
             class="hover:bg-slate-100 dark:hover:bg-slate-800"
           />
           <UButton
@@ -148,7 +148,7 @@ const stockIcon = computed(() => {
             variant="ghost"
             size="sm"
             icon="lucide:edit-3"
-            aria-label="Editar produto"
+            :aria-label="$t('products.card.edit')"
             class="hover:bg-primary-50 dark:hover:bg-primary-900/20"
           />
           <UButton
@@ -156,7 +156,7 @@ const stockIcon = computed(() => {
             variant="ghost"
             size="sm"
             icon="lucide:trash-2"
-            aria-label="Remover produto"
+            :aria-label="$t('products.card.delete')"
             class="hover:bg-red-50 dark:hover:bg-red-900/20"
             @click="handleDelete"
           />

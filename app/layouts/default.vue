@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
 const route = useRoute()
+const { locales, setLocale } = useI18n()
 
 const toggleColorMode = () => {
   colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
@@ -8,16 +9,16 @@ const toggleColorMode = () => {
 
 const navigation = [
   {
-    label: 'Dashboard',
+    label: $t('navigation.dashboard'),
     to: '/',
     icon: 'lucide:layout-dashboard',
-    description: 'Visão geral dos produtos'
+    description: $t('dashboard.subtitle')
   },
   {
-    label: 'Produtos',
+    label: $t('navigation.products'),
     to: '/products',
     icon: 'lucide:package',
-    description: 'Gerenciar catálogo'
+    description: $t('products.title')
   },
 ]
 
@@ -40,7 +41,7 @@ const closeMobileMenu = () => {
   <div class="min-h-screen bg-slate-50 dark:bg-slate-900">
     
     <a href="#main-content" class="skip-link">
-      Pular para o conteúdo principal
+      {{ $t('accessibility.skipToContent') }}
     </a>
 
     
@@ -84,7 +85,7 @@ const closeMobileMenu = () => {
               color="neutral"
               variant="ghost"
               size="sm"
-              aria-label="Notificações"
+              :aria-label="$t('notifications.title')"
               class="relative"
             >
               <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"/>
@@ -97,7 +98,7 @@ const closeMobileMenu = () => {
                 color="neutral"
                 variant="ghost"
                 size="sm"
-                aria-label="Alternar modo escuro"
+                :aria-label="$t('accessibility.themeToggle')"
                 @click="toggleColorMode"
               />
               <template #fallback>
@@ -106,10 +107,23 @@ const closeMobileMenu = () => {
                   color="neutral"
                   variant="ghost"
                   size="sm"
-                  aria-label="Alternar modo escuro"
+                  :aria-label="$t('accessibility.themeToggle')"
                 />
               </template>
             </ClientOnly>
+
+            <div class="flex items-center gap-2">
+              <UButton
+                v-for="locale in locales"
+                :key="locale.code"
+                :color="$locale === locale.code ? 'primary' : 'neutral'"
+                :variant="$locale === locale.code ? 'solid' : 'ghost'"
+                size="xs"
+                @click="setLocale(locale.code)"
+              >
+                {{ locale.code.toUpperCase() }}
+              </UButton>
+            </div>
 
             
             <UButton
@@ -117,7 +131,7 @@ const closeMobileMenu = () => {
               color="neutral"
               variant="ghost"
               size="sm"
-              aria-label="Menu"
+              :aria-label="$t('navigation.menu')"
               class="lg:hidden"
               @click="toggleMobileMenu"
             />
@@ -139,14 +153,14 @@ const closeMobileMenu = () => {
         <div class="p-6">
           <div class="flex items-center justify-between mb-6">
             <h2 class="text-lg font-semibold text-slate-900 dark:text-white">
-              Menu
+              {{ $t('navigation.menu') }}
             </h2>
             <UButton
               icon="lucide:x"
               color="neutral"
               variant="ghost"
               size="sm"
-              aria-label="Fechar menu"
+              :aria-label="$t('common.close')"
               @click="closeMobileMenu"
             />
           </div>
@@ -181,13 +195,13 @@ const closeMobileMenu = () => {
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
           <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400">
             <UIcon name="lucide:heart" class="w-4 h-4 text-red-500" />
-            <span class="text-sm">Desenvolvido por <a href="http://github.com/felipeO16/" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline">Felipe</a></span>
+            <span class="text-sm">{{ $t('footer.developedBy') }} <a href="http://github.com/felipeO16/" target="_blank" class="text-primary-600 dark:text-primary-400 hover:underline">Felipe</a></span>
           </div>
           
           <div class="flex items-center gap-6 text-sm text-slate-600 dark:text-slate-400">
-            <span>&copy; 2025 ProdGen</span>
+            <span>{{ $t('footer.copyright') }}</span>
             <span class="hidden sm:inline">•</span>
-            <span class="hidden sm:inline">Sistema de Gerenciamento de Produtos</span>
+            <span class="hidden sm:inline">{{ $t('footer.subtitle') }}</span>
           </div>
         </div>
       </div>

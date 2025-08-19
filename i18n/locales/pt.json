@@ -1,0 +1,169 @@
+{
+  "welcome": "Bem-vindo",
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Visão geral do seu catálogo de produtos",
+    "addProduct": "Adicionar Produto",
+    "stats": {
+      "totalProducts": "Total de Produtos",
+      "categories": "Categorias",
+      "featured": "Em Destaque",
+      "lowStock": "Estoque Baixo"
+    },
+    "recentProducts": {
+      "title": "Produtos Recentes",
+      "viewAll": "Ver todos"
+    },
+    "quickActions": {
+      "title": "Ações Rápidas",
+      "addProduct": "Adicionar Produto",
+      "viewAllProducts": "Ver Todos os Produtos",
+      "exportReport": "Exportar Relatório",
+      "settings": "Configurações"
+    },
+    "categories": {
+      "title": "Categorias"
+    }
+  },
+  "products": {
+    "title": "Produtos",
+    "addNew": "Adicionar Novo Produto",
+    "edit": "Editar Produto",
+    "delete": "Excluir Produto",
+    "view": "Ver Produto",
+    "search": "Buscar produtos...",
+    "filters": {
+      "title": "Filtros",
+      "category": "Categoria",
+      "allCategories": "Todas as categorias",
+      "priceRange": "Faixa de Preço",
+      "minPrice": "Preço mínimo",
+      "maxPrice": "Preço máximo",
+      "sortBy": "Ordenar por",
+      "sortOptions": {
+        "name": "Nome",
+        "price": "Preço",
+        "createdAt": "Data de criação",
+        "rating": "Avaliação"
+      },
+      "sortOrder": {
+        "asc": "Crescente",
+        "desc": "Decrescente"
+      },
+      "clearFilters": "Limpar Filtros"
+    },
+    "form": {
+      "name": "Nome do Produto",
+      "description": "Descrição",
+      "price": "Preço",
+      "category": "Categoria",
+      "image": "URL da Imagem",
+      "stock": "Estoque",
+      "featured": "Produto em Destaque",
+      "submit": "Salvar Produto",
+      "update": "Atualizar Produto",
+      "cancel": "Cancelar",
+      "validation": {
+        "nameRequired": "Nome é obrigatório",
+        "descriptionRequired": "Descrição é obrigatória",
+        "priceRequired": "Preço é obrigatório",
+        "pricePositive": "Preço deve ser maior que zero",
+        "stockRequired": "Estoque é obrigatório",
+        "stockPositive": "Estoque deve ser maior ou igual a zero",
+        "imageUrl": "URL da imagem deve ser válida"
+      }
+    },
+    "card": {
+      "stock": "em estoque",
+      "lowStock": "Estoque baixo",
+      "featured": "Destaque",
+      "view": "Ver",
+      "edit": "Editar",
+      "delete": "Excluir"
+    },
+    "deleteModal": {
+      "title": "Confirmar Exclusão",
+      "message": "Tem certeza que deseja excluir o produto \"{name}\"?",
+      "warning": "Esta ação não pode ser desfeita.",
+      "confirm": "Excluir",
+      "cancel": "Cancelar"
+    },
+    "empty": {
+      "title": "Nenhum produto encontrado",
+      "message": "Não há produtos que correspondam aos seus filtros.",
+      "action": "Adicionar primeiro produto"
+    },
+    "loading": "Carregando produtos...",
+    "error": "Erro ao carregar produtos"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "products": "Produtos",
+    "notifications": "Notificações",
+    "theme": "Tema",
+    "menu": "Menu"
+  },
+  "notifications": {
+    "title": "Notificações",
+    "markAllRead": "Marcar todas como lidas",
+    "noNotifications": "Nenhuma notificação",
+    "types": {
+      "info": "Informação",
+      "success": "Sucesso",
+      "warning": "Aviso",
+      "error": "Erro"
+    }
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "view": "Ver",
+    "close": "Fechar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "actions": "Ações",
+    "noData": "Nenhum dado encontrado",
+    "retry": "Tentar novamente",
+    "refresh": "Atualizar"
+  },
+  "pagination": {
+    "previous": "Anterior",
+    "next": "Próximo",
+    "page": "Página",
+    "of": "de",
+    "showing": "Mostrando",
+    "to": "até",
+    "of": "de",
+    "results": "resultados"
+  },
+  "footer": {
+    "developedBy": "Desenvolvido por Felipe",
+    "copyright": "© 2025 ProdGen",
+    "subtitle": "Sistema de Gerenciamento de Produtos"
+  },
+  "accessibility": {
+    "skipToContent": "Pular para o conteúdo",
+    "menuToggle": "Alternar menu",
+    "themeToggle": "Alternar tema",
+    "notificationsToggle": "Alternar notificações"
+  },
+  "categories": {
+    "electronics": "Eletrônicos",
+    "clothing": "Roupas",
+    "home": "Casa e Jardim",
+    "sports": "Esportes",
+    "books": "Livros",
+    "toys": "Brinquedos",
+    "automotive": "Automotivo",
+    "health": "Saúde e Beleza"
+  }
+}

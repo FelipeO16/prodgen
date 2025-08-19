@@ -33,51 +33,51 @@ const form = reactive({
 const errors = ref<Record<string, string>>({})
 
 const categoryOptions = [
-  { label: 'Eletrônicos', value: 'Eletrônicos' },
-  { label: 'Roupas', value: 'Roupas' },
-  { label: 'Casa e Jardim', value: 'Casa e Jardim' },
-  { label: 'Esportes', value: 'Esportes' },
-  { label: 'Livros', value: 'Livros' },
-  { label: 'Saúde e Beleza', value: 'Saúde e Beleza' },
-  { label: 'Brinquedos', value: 'Brinquedos' },
-  { label: 'Automóveis', value: 'Automóveis' }
+  { label: $t('categories.electronics'), value: 'Eletrônicos' },
+  { label: $t('categories.clothing'), value: 'Roupas' },
+  { label: $t('categories.home'), value: 'Casa e Jardim' },
+  { label: $t('categories.sports'), value: 'Esportes' },
+  { label: $t('categories.books'), value: 'Livros' },
+  { label: $t('categories.health'), value: 'Saúde e Beleza' },
+  { label: $t('categories.toys'), value: 'Brinquedos' },
+  { label: $t('categories.automotive'), value: 'Automóveis' }
 ]
 
 const validateForm = () => {
   errors.value = {}
 
   if (!form.name.trim()) {
-    errors.value.name = 'Nome é obrigatório'
+    errors.value.name = $t('products.form.validation.nameRequired')
   } else if (form.name.length < 3) {
-    errors.value.name = 'Nome deve ter pelo menos 3 caracteres'
+    errors.value.name = $t('products.form.validation.nameRequired')
   }
 
   if (!form.description.trim()) {
-    errors.value.description = 'Descrição é obrigatória'
+    errors.value.description = $t('products.form.validation.descriptionRequired')
   } else if (form.description.length < 10) {
-    errors.value.description = 'Descrição deve ter pelo menos 10 caracteres'
+    errors.value.description = $t('products.form.validation.descriptionRequired')
   }
 
   if (!form.price || form.price <= 0) {
-    errors.value.price = 'Preço deve ser maior que zero'
+    errors.value.price = $t('products.form.validation.pricePositive')
   }
 
   if (!form.category) {
-    errors.value.category = 'Categoria é obrigatória'
+    errors.value.category = $t('products.form.validation.nameRequired')
   }
 
   if (!form.image.trim()) {
-    errors.value.image = 'URL da imagem é obrigatória'
+    errors.value.image = $t('products.form.validation.imageUrl')
   } else {
     try {
       new URL(form.image)
     } catch {
-      errors.value.image = 'URL da imagem inválida'
+      errors.value.image = $t('products.form.validation.imageUrl')
     }
   }
 
   if (form.stock < 0) {
-    errors.value.stock = 'Estoque não pode ser negativo'
+    errors.value.stock = $t('products.form.validation.stockPositive')
   }
 
   return Object.keys(errors.value).length === 0
@@ -144,10 +144,10 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
           </div>
           <div>
             <h2 class="text-xl font-semibold text-slate-900 dark:text-white">
-              {{ isEditMode ? 'Editar Produto' : 'Informações do Produto' }}
+              {{ isEditMode ? $t('products.edit') : $t('products.title') }}
             </h2>
             <p class="text-sm text-slate-600 dark:text-slate-400">
-              {{ isEditMode ? 'Atualize as informações do produto' : 'Preencha todos os campos obrigatórios' }}
+              {{ isEditMode ? $t('products.edit') : $t('products.title') }}
             </p>
           </div>
         </div>
@@ -164,19 +164,19 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
         <div class="flex items-center gap-2 mb-4">
           <UIcon name="lucide:info" class="w-4 h-4 text-blue-600" />
           <h3 class="text-lg font-medium text-slate-900 dark:text-white">
-            Informações Básicas
+            {{ $t('products.form.name') }}
           </h3>
         </div>
         
         <UFormField
-          label="Nome do produto"
+          :label="$t('products.form.name')"
           name="name"
           :error="errors.name"
           required
         >
           <UInput
             v-model="form.name"
-            placeholder="Digite o nome do produto"
+            :placeholder="$t('products.form.name')"
             :disabled="loading"
             icon="lucide:package"
             size="lg"
@@ -185,14 +185,14 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
         </UFormField>
 
         <UFormField
-          label="Descrição"
+          :label="$t('products.form.description')"
           name="description"
           :error="errors.description"
           required
         >
           <UTextarea
             v-model="form.description"
-            placeholder="Descreva o produto detalhadamente, incluindo características, benefícios e especificações técnicas"
+            :placeholder="$t('products.form.description')"
             :disabled="loading"
             :rows="4"
             size="lg"
@@ -202,7 +202,7 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <UFormField
-            label="Preço (R$)"
+            :label="$t('products.form.price')"
             name="price"
             :error="errors.price"
             required
@@ -221,7 +221,7 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
           </UFormField>
 
           <UFormField
-            label="Estoque"
+            :label="$t('products.form.stock')"
             name="stock"
             :error="errors.stock"
             required
@@ -240,7 +240,7 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
         </div>
 
         <UFormField
-          label="Categoria"
+          :label="$t('products.form.category')"
           name="category"
           :error="errors.category"
           required
@@ -248,7 +248,7 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
           <USelect
             v-model="form.category"
             :items="categoryOptions"
-            placeholder="Selecione uma categoria"
+            :placeholder="$t('products.form.category')"
             :disabled="loading"
             size="lg"
             class="font-medium w-48"
@@ -260,19 +260,19 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
         <div class="flex items-center gap-2 mb-4">
           <UIcon name="lucide:image" class="w-4 h-4 text-purple-600" />
           <h3 class="text-lg font-medium text-slate-900 dark:text-white">
-            Imagem do Produto
+            {{ $t('products.form.image') }}
           </h3>
         </div>
         
         <UFormField
-          label="URL da imagem"
+          :label="$t('products.form.image')"
           name="image"
           :error="errors.image"
           required
         >
           <UInput
             v-model="form.image"
-            placeholder="https://exemplo.com/imagem.jpg"
+            :placeholder="$t('products.form.image')"
             :disabled="loading"
             icon="lucide:link"
             size="lg"
@@ -282,16 +282,16 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
 
         <div v-if="form.image" class="space-y-3">
           <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">
-            Pré-visualização
+            {{ $t('products.form.image') }}
           </label>
           <div class="relative max-w-md">
             <NuxtImg
               :src="form.image"
-              :alt="form.name || 'Pré-visualização'"
+              :alt="form.name || $t('products.form.image')"
               class="w-full h-64 object-cover rounded-xl border-2 border-slate-200 dark:border-slate-700 shadow-sm"
               loading="lazy"
               format="webp"
-              @error="errors.image = 'Erro ao carregar imagem'"
+              @error="errors.image = $t('common.error')"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-xl"/>
           </div>
@@ -302,23 +302,23 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
         <div class="flex items-center gap-2 mb-4">
           <UIcon name="lucide:settings" class="w-4 h-4 text-orange-600" />
           <h3 class="text-lg font-medium text-slate-900 dark:text-white">
-            Configurações
+            {{ $t('common.actions') }}
           </h3>
         </div>
         
         <UFormField
-          label="Configurações do produto"
+          :label="$t('products.form.featured')"
           name="featured"
         >
           <div class="space-y-3">
             <UCheckbox
               v-model="form.featured"
-              label="Produto em destaque"
+              :label="$t('products.form.featured')"
               :disabled="loading"
               class="font-medium"
             />
             <p class="text-sm text-slate-600 dark:text-slate-400 ml-6">
-              Produtos em destaque aparecem na página inicial e recebem maior visibilidade
+              {{ $t('products.form.featured') }}
             </p>
           </div>
         </UFormField>
@@ -334,7 +334,7 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
           @click="handleCancel"
         >
           <UIcon name="lucide:x" class="w-4 h-4 mr-2" />
-          Cancelar
+          {{ $t('common.cancel') }}
         </UButton>
 
         <UButton
@@ -346,7 +346,7 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
           @click="resetForm"
         >
           <UIcon name="lucide:rotate-ccw" class="w-4 h-4 mr-2" />
-          Resetar
+          {{ $t('common.refresh') }}
         </UButton>
 
         <UButton
@@ -361,7 +361,7 @@ watch(() => props.product, resetForm, { immediate: true, deep: true })
             :name="isEditMode ? 'lucide:save' : 'lucide:plus'" 
             class="w-4 h-4 mr-2" 
           />
-          {{ isEditMode ? 'Atualizar Produto' : 'Criar Produto' }}
+          {{ isEditMode ? $t('products.form.update') : $t('products.form.submit') }}
         </UButton>
       </div>
     </UForm>

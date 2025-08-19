@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/test-utils',
     '@pinia/nuxt',
+    '@nuxtjs/i18n'
   ],
   css: ['~/assets/css/main.css'],
   vite: {
@@ -25,5 +26,12 @@ export default defineNuxtConfig({
   },
   experimental: {
     payloadExtraction: false
+  },
+  i18n: {
+    locales: [
+      { code: 'en', language: 'en-US', file: 'en.json' },
+      { code: 'pt', language: 'pt-BR', file: 'pt.json' }
+    ],
+    defaultLocale: 'pt',
   }
 })

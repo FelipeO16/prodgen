@@ -6,8 +6,8 @@ definePageMeta({
 })
 
 useSeoMeta({
-  title: 'Dashboard - ProdGen',
-  description: 'Visão geral do sistema de gerenciamento de produtos.',
+  title: `${$t('dashboard.title')} - ProdGen`,
+  description: $t('dashboard.subtitle'),
   robots: 'noindex'
 })
 
@@ -36,10 +36,10 @@ const recentProducts = computed(() =>
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 class="text-3xl font-bold text-slate-900 dark:text-white">
-            Dashboard
+            {{ $t('dashboard.title') }}
           </h1>
           <p class="mt-2 text-slate-600 dark:text-slate-400">
-            Visão geral do seu catálogo de produtos
+            {{ $t('dashboard.subtitle') }}
           </p>
         </div>
         
@@ -50,7 +50,7 @@ const recentProducts = computed(() =>
             color="primary"
             variant="solid"
           >
-            Adicionar Produto
+            {{ $t('dashboard.addProduct') }}
           </UButton>
         </div>
       </div>
@@ -64,7 +64,7 @@ const recentProducts = computed(() =>
             <UIcon name="lucide:package" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
           </div>
           <div>
-            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Total de Produtos</p>
+            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.totalProducts') }}</p>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.totalProducts }}</p>
           </div>
         </div>
@@ -76,7 +76,7 @@ const recentProducts = computed(() =>
             <UIcon name="lucide:tag" class="w-6 h-6 text-green-600 dark:text-green-400" />
           </div>
           <div>
-            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Categorias</p>
+            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.categories') }}</p>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.totalCategories }}</p>
           </div>
         </div>
@@ -88,7 +88,7 @@ const recentProducts = computed(() =>
             <UIcon name="lucide:star" class="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
           </div>
           <div>
-            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Em Destaque</p>
+            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.featured') }}</p>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.featuredProducts }}</p>
           </div>
         </div>
@@ -100,7 +100,7 @@ const recentProducts = computed(() =>
             <UIcon name="lucide:alert-triangle" class="w-6 h-6 text-red-600 dark:text-red-400" />
           </div>
           <div>
-            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Estoque Baixo</p>
+            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.lowStock') }}</p>
             <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.lowStock }}</p>
           </div>
         </div>
@@ -115,7 +115,7 @@ const recentProducts = computed(() =>
           <template #header>
             <div class="flex items-center justify-between">
               <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
-                Produtos Recentes
+                {{ $t('dashboard.recentProducts.title') }}
               </h3>
               <UButton
                 to="/products"
@@ -123,7 +123,7 @@ const recentProducts = computed(() =>
                 color="primary"
                 size="sm"
               >
-                Ver todos
+                {{ $t('dashboard.recentProducts.viewAll') }}
               </UButton>
             </div>
           </template>
@@ -140,14 +140,14 @@ const recentProducts = computed(() =>
 
           <div v-else-if="recentProducts.length === 0" class="text-center py-8">
             <UIcon name="lucide:package-x" class="w-12 h-12 text-slate-400 mx-auto mb-4" />
-            <p class="text-slate-600 dark:text-slate-400">Nenhum produto encontrado</p>
+            <p class="text-slate-600 dark:text-slate-400">{{ $t('products.empty.title') }}</p>
             <UButton
               to="/products/new"
               color="primary"
               variant="ghost"
               class="mt-4"
             >
-              Adicionar primeiro produto
+              {{ $t('products.empty.action') }}
             </UButton>
           </div>
 
@@ -180,7 +180,7 @@ const recentProducts = computed(() =>
                      variant="soft"
                      size="sm"
                    >
-                    {{ product.stock }} em estoque
+                    {{ product.stock }} {{ $t('products.card.stock') }}
                   </UBadge>
                 </div>
               </div>
@@ -190,7 +190,7 @@ const recentProducts = computed(() =>
                 color="neutral"
                 variant="ghost"
                 size="sm"
-                aria-label="Ver detalhes"
+                :aria-label="$t('products.card.view')"
               />
             </div>
           </div>
@@ -202,7 +202,7 @@ const recentProducts = computed(() =>
         <UCard>
           <template #header>
             <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
-              Ações Rápidas
+              {{ $t('dashboard.quickActions.title') }}
             </h3>
           </template>
 
@@ -214,7 +214,7 @@ const recentProducts = computed(() =>
               variant="solid"
               class="w-full justify-start"
             >
-              Adicionar Produto
+              {{ $t('dashboard.quickActions.addProduct') }}
             </UButton>
             
             <UButton
@@ -224,7 +224,7 @@ const recentProducts = computed(() =>
               variant="ghost"
               class="w-full justify-start"
             >
-              Ver Todos os Produtos
+              {{ $t('dashboard.quickActions.viewAllProducts') }}
             </UButton>
             
             <UButton
@@ -233,7 +233,7 @@ const recentProducts = computed(() =>
               variant="ghost"
               class="w-full justify-start"
             >
-              Exportar Relatório
+              {{ $t('dashboard.quickActions.exportReport') }}
             </UButton>
             
             <UButton
@@ -242,7 +242,7 @@ const recentProducts = computed(() =>
               variant="ghost"
               class="w-full justify-start"
             >
-              Configurações
+              {{ $t('dashboard.quickActions.settings') }}
             </UButton>
           </div>
         </UCard>
@@ -251,12 +251,12 @@ const recentProducts = computed(() =>
         <UCard class="mt-6">
           <template #header>
             <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
-              Categorias
+              {{ $t('dashboard.categories.title') }}
             </h3>
           </template>
 
           <div v-if="categories.length === 0" class="text-center py-4">
-            <p class="text-slate-600 dark:text-slate-400 text-sm">Nenhuma categoria</p>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">{{ $t('common.noData') }}</p>
           </div>
 
           <div v-else class="space-y-2">

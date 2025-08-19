@@ -6,8 +6,8 @@ definePageMeta({
 })
 
 useSeoMeta({
-  title: 'Produtos - ProdGen',
-  description: 'Gerencie seu catálogo de produtos com filtros avançados e busca inteligente.',
+  title: `${$t('products.title')} - ProdGen`,
+  description: $t('products.title'),
   robots: 'noindex'
 })
 
@@ -27,7 +27,7 @@ const productToDelete = ref<string | null>(null)
 
 const categoryMenuOptions = computed(() => [
   { 
-    label: 'Todas as categorias', 
+    label: $t('products.filters.allCategories'), 
     value: 'all',
     onSelect: () => updateCategory('all')
   },
@@ -74,16 +74,16 @@ const confirmDelete = async () => {
       await productsStore.deleteProduct(productToDelete.value)
       const toast = useToast()
       toast.add({
-        title: 'Produto removido',
-        description: 'O produto foi removido com sucesso.',
+        title: $t('products.delete'),
+        description: $t('common.success'),
         color: 'success'
       })
       await productsStore.fetchProducts(pagination.value.currentPage)
     } catch (error) {
       const toast = useToast()
       toast.add({
-        title: 'Erro ao remover produto',
-        description: error instanceof Error ? error.message : 'Erro inesperado',
+        title: $t('common.error'),
+        description: error instanceof Error ? error.message : $t('common.error'),
         color: 'error'
       })
     } finally {
@@ -132,37 +132,37 @@ const getVisiblePages = () => {
 
 const sortMenuOptions = [
   { 
-    label: 'Nome (A-Z)', 
+    label: `${$t('products.filters.sortOptions.name')} (A-Z)`, 
     value: 'name-asc',
     onSelect: () => updateSort('name', 'asc')
   },
   { 
-    label: 'Nome (Z-A)', 
+    label: `${$t('products.filters.sortOptions.name')} (Z-A)`, 
     value: 'name-desc',
     onSelect: () => updateSort('name', 'desc')
   },
   { 
-    label: 'Preço (Menor)', 
+    label: `${$t('products.filters.sortOptions.price')} (${$t('products.filters.sortOrder.asc')})`, 
     value: 'price-asc',
     onSelect: () => updateSort('price', 'asc')
   },
   { 
-    label: 'Preço (Maior)', 
+    label: `${$t('products.filters.sortOptions.price')} (${$t('products.filters.sortOrder.desc')})`, 
     value: 'price-desc',
     onSelect: () => updateSort('price', 'desc')
   },
   { 
-    label: 'Avaliação', 
+    label: $t('products.filters.sortOptions.rating'), 
     value: 'rating-desc',
     onSelect: () => updateSort('rating', 'desc')
   },
   { 
-    label: 'Mais Recente', 
+    label: $t('products.filters.sortOptions.createdAt'), 
     value: 'createdAt-desc',
     onSelect: () => updateSort('createdAt', 'desc')
   },
   { 
-    label: 'Mais Antigo', 
+    label: $t('products.filters.sortOptions.createdAt'), 
     value: 'createdAt-asc',
     onSelect: () => updateSort('createdAt', 'asc')
   }
@@ -170,24 +170,24 @@ const sortMenuOptions = [
 
 const getSortLabel = () => {
   const sortLabels = {
-    'name-asc': 'Nome (A-Z)',
-    'name-desc': 'Nome (Z-A)',
-    'price-asc': 'Preço (Menor)',
-    'price-desc': 'Preço (Maior)',
-    'rating-desc': 'Avaliação',
-    'createdAt-desc': 'Mais Recente',
-    'createdAt-asc': 'Mais Antigo'
+    'name-asc': `${$t('products.filters.sortOptions.name')} (A-Z)`,
+    'name-desc': `${$t('products.filters.sortOptions.name')} (Z-A)`,
+    'price-asc': `${$t('products.filters.sortOptions.price')} (${$t('products.filters.sortOrder.asc')})`,
+    'price-desc': `${$t('products.filters.sortOptions.price')} (${$t('products.filters.sortOrder.desc')})`,
+    'rating-desc': $t('products.filters.sortOptions.rating'),
+    'createdAt-desc': $t('products.filters.sortOptions.createdAt'),
+    'createdAt-asc': $t('products.filters.sortOptions.createdAt')
   }
   
   const key = `${filters.value.sortBy}-${filters.value.sortOrder}`
-  return sortLabels[key as keyof typeof sortLabels] || 'Ordenar por...'
+  return sortLabels[key as keyof typeof sortLabels] || $t('products.filters.sortBy')
 }
 
 const getCategoryLabel = () => {
   if (filters.value.category === 'all') {
-    return 'Todas as categorias'
+    return $t('products.filters.allCategories')
   }
-  return filters.value.category || 'Todas as categorias'
+  return filters.value.category || $t('products.filters.allCategories')
 }
 
 
@@ -205,10 +205,10 @@ onMounted(async () => {
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 class="text-3xl font-bold text-slate-900 dark:text-white">
-            Produtos
+            {{ $t('products.title') }}
           </h1>
           <p class="mt-2 text-slate-600 dark:text-slate-400">
-            Gerencie seu catálogo de produtos
+            {{ $t('products.title') }}
           </p>
         </div>
         
@@ -219,7 +219,7 @@ onMounted(async () => {
             color="primary"
             variant="solid"
           >
-            Adicionar Produto
+            {{ $t('products.addNew') }}
           </UButton>
         </div>
       </div>
@@ -232,14 +232,14 @@ onMounted(async () => {
           <UCard>
             <template #header>
               <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Filtros</h2>
+                <h2 class="text-lg font-semibold text-slate-900 dark:text-white">{{ $t('products.filters.title') }}</h2>
                 <UButton
                   color="neutral"
                   variant="ghost"
                   size="sm"
                   @click="clearAllFilters"
                 >
-                  Limpar tudo
+                  {{ $t('products.filters.clearFilters') }}
                 </UButton>
               </div>
             </template>
@@ -248,19 +248,19 @@ onMounted(async () => {
               
               <div>
                 <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  Buscar produtos
+                  {{ $t('products.search') }}
                 </label>
                 <ClientOnly>
                   <SearchInput
                     :model-value="filters.search"
                     :loading="loading"
-                    placeholder="Digite o nome do produto..."
+                    :placeholder="$t('products.search')"
                     @update:model-value="productsStore.updateSearch"
                     @search="searchProducts"
                   />
                   <template #fallback>
                     <UInput
-                      placeholder="Carregando..."
+                      :placeholder="$t('common.loading')"
                       icon="lucide:search"
                       disabled
                     />
@@ -271,7 +271,7 @@ onMounted(async () => {
                              
                <div>
                  <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                   Categoria
+                   {{ $t('products.filters.category') }}
                  </label>
                                    <ClientOnly>
                     <UDropdownMenu
@@ -299,7 +299,7 @@ onMounted(async () => {
                         disabled
                       >
                         <UIcon name="lucide:tag" class="w-4 h-4 mr-2" />
-                        Carregando categorias...
+                        {{ $t('common.loading') }}
                       </UButton>
                     </template>
                   </ClientOnly>
@@ -308,7 +308,7 @@ onMounted(async () => {
               
               <div>
                 <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  Faixa de preço
+                  {{ $t('products.filters.priceRange') }}
                 </label>
                 <ClientOnly>
                   <PriceRangeFilter
@@ -334,7 +334,7 @@ onMounted(async () => {
                              
                <div>
                  <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                   Ordenar por
+                   {{ $t('products.filters.sortBy') }}
                  </label>
                     <ClientOnly>
                                          <UDropdownMenu
@@ -358,7 +358,7 @@ onMounted(async () => {
                     </UDropdownMenu>
                     <template #fallback>
                       <USelect
-                        placeholder="Carregando..."
+                        :placeholder="$t('common.loading')"
                         disabled
                         class="w-full"
                       />
@@ -378,7 +378,7 @@ onMounted(async () => {
             <ClientOnly>
               <div class="flex items-center gap-4">
                 <span class="text-sm text-slate-600 dark:text-slate-400">
-                  {{ pagination.totalItems }} produtos encontrados
+                  {{ pagination.totalItems }} {{ $t('products.title') }} {{ $t('common.search') }}
                 </span>
                 <UBadge
                   v-if="filters.search || filters.category !== 'all' || filters.minPrice || filters.maxPrice"
@@ -392,7 +392,7 @@ onMounted(async () => {
               <template #fallback>
                 <div class="flex items-center gap-4">
                   <span class="text-sm text-slate-600 dark:text-slate-400">
-                    Carregando produtos...
+                    {{ $t('products.loading') }}
                   </span>
                 </div>
               </template>
@@ -414,10 +414,10 @@ onMounted(async () => {
 
           <EmptyState
             v-else-if="!hasProducts && !loading"
-            title="Nenhum produto encontrado"
-            description="Não encontramos produtos que correspondam aos seus critérios de busca."
+            :title="$t('products.empty.title')"
+            :description="$t('products.empty.message')"
             icon="lucide:package-search"
-            action-label="Adicionar Produto"
+            :action-label="$t('products.addNew')"
             action-to="/products/new"
           />
 
@@ -434,7 +434,7 @@ onMounted(async () => {
                          
              <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                <div class="text-sm text-slate-600 dark:text-slate-400">
-                 Página {{ pagination.currentPage }} de {{ pagination.totalPages }}
+                 {{ $t('pagination.page') }} {{ pagination.currentPage }} {{ $t('pagination.of') }} {{ pagination.totalPages }}
                </div>
 
                <div class="flex items-center gap-2">
@@ -484,9 +484,9 @@ onMounted(async () => {
     
     <DeleteConfirmationModal
       :open="showDeleteModal"
-      title="Remover produto"
-      description="Esta ação não pode ser desfeita. O produto será removido permanentemente do catálogo."
-      confirm-label="Remover"
+      :title="$t('products.deleteModal.title')"
+      :description="$t('products.deleteModal.warning')"
+      :confirm-label="$t('products.deleteModal.confirm')"
       :loading="loading"
       @confirm="confirmDelete"
       @cancel="cancelDelete"

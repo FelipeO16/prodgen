@@ -12,6 +12,7 @@ useSeoMeta({
 })
 
 const productsStore = useProductsStore()
+const bulkStore = useBulkOperationsStore()
 const { 
   products, 
   loading, 
@@ -213,6 +214,16 @@ onMounted(async () => {
         </div>
         
         <div class="flex items-center gap-3">
+          <UButton
+            icon="lucide:check-square"
+            color="neutral"
+            variant="outline"
+            size="sm"
+            @click="bulkStore.toggleSelectMode"
+          >
+            {{ $t('bulkOperations.selected', { count: 0 }) }}
+          </UButton>
+          
           <UButton
             to="/products/new"
             icon="lucide:plus"
@@ -427,7 +438,10 @@ onMounted(async () => {
                 v-for="product in products"
                 :key="product.id"
                 :product="product"
+                :select-mode="bulkStore.isSelectMode"
+                :selected="bulkStore.selectedItems.has(product.id)"
                 @delete="handleDeleteProduct"
+                @select="bulkStore.toggleItem(product.id)"
               />
             </div>
 
@@ -492,5 +506,7 @@ onMounted(async () => {
       @cancel="cancelDelete"
       @update:open="(value) => showDeleteModal = value"
     />
+    
+    <BulkOperationsBar :products="products" />
   </div>
 </template>

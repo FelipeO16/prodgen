@@ -22,6 +22,7 @@
     "@nuxt/ui": "^3.3.2",
     "@nuxtjs/i18n": "^10.0.5",
     "@pinia/nuxt": "^0.11.2",
+    "@vite-pwa/nuxt": "^1.0.4",
     "eslint": "^9.33.0",
     "nuxt": "^4.0.3",
     "pinia": "^3.0.3",

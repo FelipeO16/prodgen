@@ -4,20 +4,29 @@ import type { Product } from '~~/types/product'
 interface Props {
   product: Product
   loading?: boolean
+  selectMode?: boolean
+  selected?: boolean
 }
 
 interface Emits {
   'delete': [productId: string]
+  'select': [productId: string]
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  loading: false
+  loading: false,
+  selectMode: false,
+  selected: false
 })
 
 const emit = defineEmits<Emits>()
 
 const handleDelete = () => {
   emit('delete', props.product.id)
+}
+
+const handleSelect = () => {
+  emit('select', props.product.id)
 }
 
 const formattedPrice = computed(() => {
@@ -47,7 +56,14 @@ const stockIcon = computed(() => {
 </script>
 
 <template>
-  <UCard class="group hover:shadow-xl transition-all duration-300 h-full flex flex-col overflow-hidden border border-slate-200 dark:border-slate-700">
+  <UCard 
+    class="group hover:shadow-xl transition-all duration-300 h-full flex flex-col overflow-hidden border border-slate-200 dark:border-slate-700"
+    :class="{
+      'ring-2 ring-primary-500 bg-primary-50 dark:bg-primary-900/10': selected && selectMode,
+      'cursor-pointer': selectMode
+    }"
+    @click="selectMode ? handleSelect() : null"
+  >
     
     <div class="relative aspect-[4/3] overflow-hidden">
       <NuxtImg
@@ -74,6 +90,14 @@ const stockIcon = computed(() => {
           <UIcon name="lucide:star" class="w-3 h-3 mr-1" />
           {{ $t('products.card.featured') }}
         </UBadge>
+        
+        <div v-if="selectMode" class="flex items-center justify-center w-6 h-6 bg-white dark:bg-slate-800 rounded-full shadow-lg">
+          <UIcon 
+            :name="selected ? 'lucide:check' : 'lucide:circle'" 
+            class="w-4 h-4"
+            :class="selected ? 'text-primary-600' : 'text-slate-400'"
+          />
+        </div>
       </div>
       
       <div class="absolute top-3 right-3">

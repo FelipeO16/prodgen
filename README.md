@@ -14,6 +14,7 @@ SPA moderna para gerenciamento de produtos com Nuxt 4, Vue 3, TypeScript e Nuxt 
 - **Nuxt UI v3** - Componentes
 - **Pinia** - Gerenciamento de estado
 - **Tailwind CSS** - Estilização
+- **PWA** - Progressive Web App
 
 ## ✨ Funcionalidades
 
@@ -22,6 +23,8 @@ SPA moderna para gerenciamento de produtos com Nuxt 4, Vue 3, TypeScript e Nuxt 
 - 🎛️ Filtros por categoria e preço
 - 📊 Ordenação múltipla
 - ✏️ CRUD completo
+- ⚡ Operações em lote (bulk operations)
+- 🎯 Modais funcionais com overlay
 - 📱 Design responsivo
 - ♿ Acessibilidade WCAG AA
 
@@ -85,6 +88,15 @@ app/
 - Remoção com confirmação
 - Preview de imagens
 
+### Operações em Lote (Bulk Operations)
+- ✅ Seleção múltipla de produtos
+- 📝 Atualização em massa (categoria, preço, destaque)
+- 🗑️ Exclusão em massa com confirmação
+- 📤 Exportação em CSV e JSON
+- 🎯 Modais funcionais com overlay centralizado
+- ⌨️ Suporte a tecla Escape para fechar modais
+- 🌑 Backdrop escuro com click para fechar
+
 
 ### Scripts Disponíveis
 ```bash
@@ -109,6 +121,7 @@ npm run test:coverage # Testes com coverage
 - **Keyboard Navigation** - Navegação completa por teclado
 - **Screen Readers** - Suporte a leitores de tela
 - **Focus Management** - Gerenciamento de foco
+- **Modal Accessibility** - Modais acessíveis com ARIA labels
 
 ## 🚀 Performance
 
@@ -116,6 +129,7 @@ npm run test:coverage # Testes com coverage
 - **Image Optimization** - Otimização automática
 - **Code Splitting** - Divisão inteligente de código
 - **Caching** - Cache de requisições
+- **PWA Ready** - App instalável com funcionalidades offline
 
 ## 📄 Licença
 

@@ -133,7 +133,9 @@
     "actions": "Ações",
     "noData": "Nenhum dado encontrado",
     "retry": "Tentar novamente",
-    "refresh": "Atualizar"
+    "refresh": "Atualizar",
+    "yes": "Sim",
+    "no": "Não"
   },
   "pagination": {
     "previous": "Anterior",
@@ -165,5 +167,105 @@
     "toys": "Brinquedos",
     "automotive": "Automotivo",
     "health": "Saúde e Beleza"
+  },
+  "pwa": {
+    "install": {
+      "title": "Instalar App",
+      "description": "Instale o ProdGen no seu dispositivo para uma experiência melhor",
+      "button": "Instalar"
+    },
+    "update": {
+      "title": "Atualização Disponível",
+      "description": "Uma nova versão do app está disponível",
+      "button": "Atualizar"
+    },
+    "offline": {
+      "title": "App Disponível Offline",
+      "description": "O ProdGen agora funciona sem internet"
+    }
+  },
+  "bulkOperations": {
+    "selected": "{count} selecionados",
+    "clear": "Limpar Seleção",
+    "export": {
+      "title": "Exportar",
+      "csv": "Exportar CSV",
+      "json": "Exportar JSON",
+      "success": "Exportação concluída",
+      "description": "{count} produtos exportados com sucesso",
+      "error": "Erro na exportação"
+    },
+    "update": {
+      "title": "Atualizar em Lote",
+      "success": "Atualização em lote concluída",
+      "description": "{count} produtos atualizados com sucesso",
+      "error": "Erro na atualização em lote",
+      "modal": {
+        "title": "Atualizar Produtos",
+        "description": "Atualizar {count} produtos selecionados",
+        "categoryPlaceholder": "Manter categoria atual",
+        "pricePlaceholder": "Manter preço atual",
+        "featuredPlaceholder": "Manter status atual",
+        "confirm": "Atualizar"
+      }
+    },
+    "delete": {
+      "title": "Excluir em Lote",
+      "success": "Exclusão em lote concluída",
+      "description": "{count} produtos excluídos com sucesso",
+      "error": "Erro na exclusão em lote",
+      "modal": {
+        "title": "Excluir Produtos",
+        "description": "Excluir {count} produtos selecionados",
+        "warning": "Esta ação não pode ser desfeita",
+        "confirm": "Excluir"
+      }
+    }
+  },
+  "realtime": {
+    "activity": {
+      "title": "Atividade em Tempo Real",
+      "empty": "Nenhuma atividade recente",
+      "clear": "Limpar Atividades"
+    },
+    "status": {
+      "online": "Online",
+      "offline": "Offline"
+    },
+    "online": {
+      "title": "Conexão Restaurada",
+      "description": "Você está online novamente"
+    },
+    "offline": {
+      "title": "Sem Conexão",
+      "description": "Você está offline"
+    },
+    "product": {
+      "created": {
+        "title": "Produto Criado",
+        "description": "Produto \"{name}\" foi criado"
+      },
+      "updated": {
+        "title": "Produto Atualizado",
+        "description": "Produto \"{name}\" foi atualizado"
+      },
+      "deleted": {
+        "title": "Produto Excluído",
+        "description": "Produto \"{name}\" foi excluído"
+      }
+    },
+    "bulk": {
+      "title": "Operação em Lote",
+      "description": "Operação {type} em {count} produtos"
+    },
+    "time": {
+      "seconds": "{count} segundos atrás",
+      "minutes": "{count} minutos atrás",
+      "hours": "{count} horas atrás"
+    },
+    "event": {
+      "unknown": "Evento desconhecido"
+    }
   }
+
 }

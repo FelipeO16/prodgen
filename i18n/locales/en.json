@@ -133,7 +133,9 @@
     "actions": "Actions",
     "noData": "No data found",
     "retry": "Retry",
-    "refresh": "Refresh"
+    "refresh": "Refresh",
+    "yes": "Yes",
+    "no": "No"
   },
   "pagination": {
     "previous": "Previous",
@@ -164,5 +166,105 @@
     "toys": "Toys",
     "automotive": "Automotive",
     "health": "Health & Beauty"
+  },
+  "pwa": {
+    "install": {
+      "title": "Install App",
+      "description": "Install ProdGen on your device for a better experience",
+      "button": "Install"
+    },
+    "update": {
+      "title": "Update Available",
+      "description": "A new version of the app is available",
+      "button": "Update"
+    },
+    "offline": {
+      "title": "App Available Offline",
+      "description": "ProdGen now works without internet"
+    }
+  },
+  "bulkOperations": {
+    "selected": "{count} selected",
+    "clear": "Clear Selection",
+    "export": {
+      "title": "Export",
+      "csv": "Export CSV",
+      "json": "Export JSON",
+      "success": "Export completed",
+      "description": "{count} products exported successfully",
+      "error": "Export error"
+    },
+    "update": {
+      "title": "Bulk Update",
+      "success": "Bulk update completed",
+      "description": "{count} products updated successfully",
+      "error": "Bulk update error",
+      "modal": {
+        "title": "Update Products",
+        "description": "Update {count} selected products",
+        "categoryPlaceholder": "Keep current category",
+        "pricePlaceholder": "Keep current price",
+        "featuredPlaceholder": "Keep current status",
+        "confirm": "Update"
+      }
+    },
+    "delete": {
+      "title": "Bulk Delete",
+      "success": "Bulk delete completed",
+      "description": "{count} products deleted successfully",
+      "error": "Bulk delete error",
+      "modal": {
+        "title": "Delete Products",
+        "description": "Delete {count} selected products",
+        "warning": "This action cannot be undone",
+        "confirm": "Delete"
+      }
+    }
+  },
+  "realtime": {
+    "activity": {
+      "title": "Real-time Activity",
+      "empty": "No recent activity",
+      "clear": "Clear Activities"
+    },
+    "status": {
+      "online": "Online",
+      "offline": "Offline"
+    },
+    "online": {
+      "title": "Connection Restored",
+      "description": "You are back online"
+    },
+    "offline": {
+      "title": "No Connection",
+      "description": "You are offline"
+    },
+    "product": {
+      "created": {
+        "title": "Product Created",
+        "description": "Product \"{name}\" was created"
+      },
+      "updated": {
+        "title": "Product Updated",
+        "description": "Product \"{name}\" was updated"
+      },
+      "deleted": {
+        "title": "Product Deleted",
+        "description": "Product \"{name}\" was deleted"
+      }
+    },
+    "bulk": {
+      "title": "Bulk Operation",
+      "description": "Operation {type} on {count} products"
+    },
+    "time": {
+      "seconds": "{count} seconds ago",
+      "minutes": "{count} minutes ago",
+      "hours": "{count} hours ago"
+    },
+    "event": {
+      "unknown": "Unknown event"
+    }
   }
+
 }

@@ -57,55 +57,108 @@ const recentProducts = computed(() =>
     </div>
 
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-      <UCard class="p-6">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
-            <UIcon name="lucide:package" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+    <ClientOnly>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <UCard class="p-6">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
+              <UIcon name="lucide:package" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.totalProducts') }}</p>
+              <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.totalProducts }}</p>
+            </div>
           </div>
-          <div>
-            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.totalProducts') }}</p>
-            <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.totalProducts }}</p>
-          </div>
-        </div>
-      </UCard>
+        </UCard>
 
-      <UCard class="p-6">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg">
-            <UIcon name="lucide:tag" class="w-6 h-6 text-green-600 dark:text-green-400" />
+        <UCard class="p-6">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg">
+              <UIcon name="lucide:tag" class="w-6 h-6 text-green-600 dark:text-green-400" />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.categories') }}</p>
+              <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.totalCategories }}</p>
+            </div>
           </div>
-          <div>
-            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.categories') }}</p>
-            <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.totalCategories }}</p>
-          </div>
-        </div>
-      </UCard>
+        </UCard>
 
-      <UCard class="p-6">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center justify-center w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg">
-            <UIcon name="lucide:star" class="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
+        <UCard class="p-6">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center justify-center w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg">
+              <UIcon name="lucide:star" class="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.featured') }}</p>
+              <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.featuredProducts }}</p>
+            </div>
           </div>
-          <div>
-            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.featured') }}</p>
-            <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.featuredProducts }}</p>
-          </div>
-        </div>
-      </UCard>
+        </UCard>
 
-      <UCard class="p-6">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-lg">
-            <UIcon name="lucide:alert-triangle" class="w-6 h-6 text-red-600 dark:text-red-400" />
+        <UCard class="p-6">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-lg">
+              <UIcon name="lucide:alert-triangle" class="w-6 h-6 text-red-600 dark:text-red-400" />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.lowStock') }}</p>
+              <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.lowStock }}</p>
+            </div>
           </div>
-          <div>
-            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.lowStock') }}</p>
-            <p class="text-2xl font-bold text-slate-900 dark:text-white">{{ stats.lowStock }}</p>
-          </div>
+        </UCard>
+      </div>
+      <template #fallback>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <UCard class="p-6">
+            <div class="flex items-center gap-4">
+              <div class="flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg">
+                <UIcon name="lucide:package" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              </div>
+              <div>
+                <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.totalProducts') }}</p>
+                <p class="text-2xl font-bold text-slate-900 dark:text-white">-</p>
+              </div>
+            </div>
+          </UCard>
+
+          <UCard class="p-6">
+            <div class="flex items-center gap-4">
+              <div class="flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg">
+                <UIcon name="lucide:tag" class="w-6 h-6 text-green-600 dark:text-green-400" />
+              </div>
+              <div>
+                <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.categories') }}</p>
+                <p class="text-2xl font-bold text-slate-900 dark:text-white">-</p>
+              </div>
+            </div>
+          </UCard>
+
+          <UCard class="p-6">
+            <div class="flex items-center gap-4">
+              <div class="flex items-center justify-center w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg">
+                <UIcon name="lucide:star" class="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
+              </div>
+              <div>
+                <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.featured') }}</p>
+                <p class="text-2xl font-bold text-slate-900 dark:text-white">-</p>
+              </div>
+            </div>
+          </UCard>
+
+          <UCard class="p-6">
+            <div class="flex items-center gap-4">
+              <div class="flex items-center justify-center w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-lg">
+                <UIcon name="lucide:alert-triangle" class="w-6 h-6 text-red-600 dark:text-red-400" />
+              </div>
+              <div>
+                <p class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ $t('dashboard.stats.lowStock') }}</p>
+                <p class="text-2xl font-bold text-slate-900 dark:text-white">-</p>
+              </div>
+            </div>
+          </UCard>
         </div>
-      </UCard>
-    </div>
+      </template>
+    </ClientOnly>
 
     
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">

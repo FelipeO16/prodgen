@@ -80,6 +80,8 @@ const closeMobileMenu = () => {
           
           <div class="flex items-center gap-3">
             
+            <RealTimeActivity />
+            
             <UButton
               icon="lucide:bell"
               color="neutral"
@@ -112,18 +114,31 @@ const closeMobileMenu = () => {
               </template>
             </ClientOnly>
 
-            <div class="flex items-center gap-2">
-              <UButton
-                v-for="locale in locales"
-                :key="locale.code"
-                :color="$locale === locale.code ? 'primary' : 'neutral'"
-                :variant="$locale === locale.code ? 'solid' : 'ghost'"
-                size="xs"
-                @click="setLocale(locale.code)"
-              >
-                {{ locale.code.toUpperCase() }}
-              </UButton>
-            </div>
+                         <ClientOnly>
+               <div class="flex items-center gap-2">
+                 <UButton
+                   v-for="locale in locales"
+                   :key="locale.code"
+                   :color="locale.code === 'pt' ? 'primary' : 'neutral'"
+                   :variant="locale.code === 'pt' ? 'solid' : 'ghost'"
+                   size="xs"
+                   @click="setLocale(locale.code)"
+                 >
+                   {{ locale.code.toUpperCase() }}
+                 </UButton>
+               </div>
+               <template #fallback>
+                 <div class="flex items-center gap-2">
+                   <UButton
+                     color="primary"
+                     variant="solid"
+                     size="xs"
+                   >
+                     PT
+                   </UButton>
+                 </div>
+               </template>
+             </ClientOnly>
 
             
             <UButton
@@ -206,5 +221,7 @@ const closeMobileMenu = () => {
         </div>
       </div>
     </footer>
+    
+    <PWAInstallPrompt />
   </div>
 </template>
